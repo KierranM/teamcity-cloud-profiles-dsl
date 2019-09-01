@@ -1,9 +1,9 @@
-package io.github.kierranm.teamcity.v2018_2.projectFeatures
+package com.github.kierranm.teamcity.v2018_2.projectFeatures
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.TeamCityDsl
 
 @TeamCityDsl
-open class MultiSubnetEc2CloudImage(val profile: CloudProfile) {
+open class Ec2CloudImage(profile: CloudProfile) : CloudImage(profile) {
     /**
      * The AMI ID of this agent
      */
@@ -13,9 +13,9 @@ open class MultiSubnetEc2CloudImage(val profile: CloudProfile) {
      */
     lateinit var ec2KeyPair: String
     /**
-     * A list of subnets which agents will be created in
+     * The Subnet ID the agent will be created in
      */
-    lateinit var subnetIds: List<String>
+    lateinit var subnetId: String
     /**
      * The EC2 Instance Type that will be created
      */
@@ -53,35 +53,23 @@ open class MultiSubnetEc2CloudImage(val profile: CloudProfile) {
      */
     var ebsOptimised: Boolean = false
 
-    /**
-     * The ID of an agent pool that this agent belongs to
-     * Defaults to the Default pool
-     */
-    var agentPoolId: Int = 0
-
-    constructor(profile: CloudProfile, init: MultiSubnetEc2CloudImage.() -> Unit) : this(profile) {
+    constructor(profile: CloudProfile, init: Ec2CloudImage.() -> Unit) : this(profile) {
         init()
-    }
-
-    fun toEc2CloudImages() : List<Ec2CloudImage> {
-        var images = mutableListOf<Ec2CloudImage>()
-        for (subnet in subnetIds) {
-            val image = Ec2CloudImage(profile) {
-                ami = ami
-                ec2KeyPair = ec2KeyPair
-                subnetId = subnet
-                instanceType = instanceType
-                userData = userData
-                iamInstanceProfile = iamInstanceProfile
-                instanceTags = instanceTags
-                agentNamePrefix = agentNamePrefix
-                useSpotInstance = useSpotInstance
-                spotInstancePrice = spotInstancePrice
-                securityGroupIds = securityGroupIds
-                ebsOptimised = ebsOptimised
-            }
-            images.add(image)
+        param("amazon-id", ami)
+        param("source-id", agentNamePrefix)
+        param("image-name-prefix", agentNamePrefix)
+        param("use-spot-instances", useSpotInstance.toString())
+        if (useSpotInstance) {
+            param("spot-instance-price", spotInstancePrice.toString())
         }
-        return images.toList()
+
+        param("user-tags", instanceTags.map { (key, value) -> "$key=$value" }.joinToString(","))
+        param("subnet-id", subnetId)
+        param("ebs-optimized", ebsOptimised.toString())
+        param("iam-instance-profile", iamInstanceProfile)
+        param("instance-type", instanceType)
+        param("user-script", userData)
+        param("key-pair-name", ec2KeyPair)
+        param("security-group-ids", securityGroupIds.joinToString(","))
     }
 }

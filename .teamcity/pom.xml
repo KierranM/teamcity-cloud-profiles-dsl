@@ -125,7 +125,7 @@
     <dependency>
       <groupId>com.github.KierranM</groupId>
       <artifactId>teamcity-cloud-profiles-dsl</artifactId>
-      <version>master-</version>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
 </project>

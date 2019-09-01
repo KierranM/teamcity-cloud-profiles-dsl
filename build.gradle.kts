@@ -7,7 +7,7 @@ plugins {
 var dslVersion = "2018.2"
 
 group = "io.github.kierranm"
-version = "1.0-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
     jcenter()

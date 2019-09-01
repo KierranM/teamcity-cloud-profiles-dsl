@@ -32,10 +32,6 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
-    <repository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </repository>
   </repositories>
 
   <pluginRepositories>
@@ -122,10 +118,5 @@
           <version>${kotlin.version}</version>
           <scope>test</scope>
       </dependency>
-    <dependency>
-      <groupId>com.github.KierranM</groupId>
-      <artifactId>teamcity-cloud-profiles-dsl</artifactId>
-      <version>1.0.0</version>
-    </dependency>
   </dependencies>
 </project>

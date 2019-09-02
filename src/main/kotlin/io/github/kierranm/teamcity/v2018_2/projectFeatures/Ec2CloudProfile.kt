@@ -1,4 +1,4 @@
-package com.github.kierranm.teamcity.v2018_2.projectFeatures
+package io.github.kierranm.teamcity.v2018_2.projectFeatures
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.TeamCityDsl
 

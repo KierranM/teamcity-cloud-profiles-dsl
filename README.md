@@ -10,8 +10,8 @@ The library provides a number of extensions to aid in creating TeamCity Cloud Ag
 ```xml
     <repositories>
       <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
+        <id>jcenter</id>
+        <url>http://jcenter.bintray.com</url>
       </repository>
     </repositories>
 ```
@@ -21,7 +21,7 @@ The library provides a number of extensions to aid in creating TeamCity Cloud Ag
 
 ```xml
    <dependency>
-	 <groupId>com.github.kierranm</groupId>
+	 <groupId>io.github.kierranm</groupId>
 	 <artifactId>teamcity-cloud-profiles-dsl</artifactId>
 	 <version>0.1.0</version>
    </dependency>

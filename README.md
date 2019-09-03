@@ -3,15 +3,17 @@ Kotlin DSL library for TeamCity Cloud Agent profiles
 
 The library provides a number of extensions to aid in creating TeamCity Cloud Agent Profiles.
 
+[ ![Download](https://api.bintray.com/packages/kierranm/io.github.kierranm/teamcity-cloud-profiles-dsl/images/download.svg) ](https://bintray.com/kierranm/io.github.kierranm/teamcity-cloud-profiles-dsl/_latestVersion)
+
 ## Usage
 
-1. Add jitpack repository to your .teamcity/pom.xml  
+1. Add this Bintray repository to your .teamcity/pom.xml  
 
 ```xml
     <repositories>
       <repository>
-        <id>jcenter</id>
-        <url>http://jcenter.bintray.com</url>
+        <id>bintray-kierranm</id>
+        <url>https://dl.bintray.com/kierranm/io.github.kierranm</url>
       </repository>
     </repositories>
 ```
@@ -26,8 +28,6 @@ The library provides a number of extensions to aid in creating TeamCity Cloud Ag
 	 <version>0.1.0</version>
    </dependency>
 ```
-
-[![](https://jitpack.io/v/KierranM/teamcity-cloud-profiles-dsl.svg)](https://jitpack.io/#KierranM/teamcity-cloud-profiles-dsl)
 
 ## Examples
 

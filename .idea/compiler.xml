@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="teamcity-cloud-profiles-dsl" />
         <module name="TeamcityCloudProfilesDsl_dsl" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="teamcity-cloud-profiles-dsl.main" target="1.10" />
+      <module name="teamcity-cloud-profiles-dsl.test" target="1.10" />
+    </bytecodeTargetLevel>
   </component>
 </project>

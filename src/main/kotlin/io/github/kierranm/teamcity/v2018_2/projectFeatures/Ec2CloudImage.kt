@@ -55,6 +55,11 @@ open class Ec2CloudImage(profile: CloudProfile) : CloudImage(profile) {
 
     constructor(profile: CloudProfile, init: Ec2CloudImage.() -> Unit) : this(profile) {
         init()
+        setParams()
+    }
+
+    override fun setParams() {
+        super.setParams()
         param("amazon-id", amiId)
         param("source-id", agentNamePrefix)
         param("image-name-prefix", agentNamePrefix)

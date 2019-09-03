@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2018_2.ProjectFeatures
 import jetbrains.buildServer.configs.kotlin.v2018_2.TeamCityDsl
 
 @TeamCityDsl
-abstract class CloudProfile() : ProjectFeature() {
+open class CloudProfile() : ProjectFeature() {
     /**
      * Name of the Cloud Profile
      */
@@ -61,14 +61,29 @@ abstract class CloudProfile() : ProjectFeature() {
 
     val images = CloudImages(this)
 
+    init {
+        type = "CloudProfile"
+    }
+
     /**
      * Creates a cloud profile feature and initializes it with the specified init block
      * @param init initialization block
      */
     constructor(init: CloudProfile.() -> Unit) : this() {
-        type = "CloudProfile"
-
+        this.type = "CloudProfile"
         init()
+        setParams()
+    }
+
+    /**
+     * Allows to specify cloud images for this profile
+     * @param init function to initialize images
+     */
+    fun images(init: CloudImages.() -> Unit) {
+        images.init()
+    }
+
+    open fun setParams() {
         param("name", name)
         param("description", description)
         param("system.cloud.profile_id", id!!)
@@ -94,13 +109,5 @@ abstract class CloudProfile() : ProjectFeature() {
         if (terminateAfterTotalWorkTime != 0) {
             param("total-work-time", terminateAfterTotalWorkTime.toString())
         }
-    }
-
-    /**
-     * Allows to specify cloud images for this profile
-     * @param init function to initialize images
-     */
-    fun images(init: CloudImages.() -> Unit) {
-        images.init()
     }
 }

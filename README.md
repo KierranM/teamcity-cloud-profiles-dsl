@@ -25,7 +25,7 @@ The library provides a number of extensions to aid in creating TeamCity Cloud Ag
    <dependency>
 	 <groupId>io.github.kierranm</groupId>
 	 <artifactId>teamcity-cloud-profiles-dsl</artifactId>
-	 <version>0.1.1</version>
+	 <version>0.1.2</version>
    </dependency>
 ```
 
@@ -49,7 +49,7 @@ project {
             
             images {
                 ami {
-                    ami = "ami-124135125"
+                    amiId = "ami-124135125"
                     ec2KeyPair = "MyKeyPair"
                     subnetIds = listOf(
                         "subnet-14912094",

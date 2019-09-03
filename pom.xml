@@ -9,7 +9,7 @@
 
     <groupId>io.github.kierranm</groupId>
     <artifactId>teamcity-cloud-profiles-dsl</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -36,6 +36,7 @@
         <kotlin.version>1.3.50</kotlin.version>
         <teamcity.dsl.version>2019.1</teamcity.dsl.version>
         <bintray.subject>kierranm</bintray.subject>
+        <dokka.version>0.9.18</dokka.version>
     </properties>
 
     <repositories>
@@ -80,6 +81,19 @@
                         <phase>test-compile</phase>
                         <goals>
                             <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>

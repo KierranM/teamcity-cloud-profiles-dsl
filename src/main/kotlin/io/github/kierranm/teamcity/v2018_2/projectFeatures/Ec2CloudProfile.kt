@@ -20,6 +20,12 @@ open class Ec2CloudProfile() : CloudProfile() {
     constructor(init: Ec2CloudProfile.() -> Unit) : this() {
         cloudCode = "amazon"
         init()
+        setParams()
+        // param("spot-fleet-config", "")
+    }
+
+    override fun setParams() {
+        super.setParams()
         param("region", region)
         param("use-instance-iam-role", useInstanceIAMRole.toString())
 
@@ -28,6 +34,5 @@ open class Ec2CloudProfile() : CloudProfile() {
             param("secure:secret-key", secretKey)
 
         }
-        // param("spot-fleet-config", "")
     }
 }

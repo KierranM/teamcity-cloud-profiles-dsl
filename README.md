@@ -25,7 +25,7 @@ The library provides a number of extensions to aid in creating TeamCity Cloud Ag
    <dependency>
 	 <groupId>io.github.kierranm</groupId>
 	 <artifactId>teamcity-cloud-profiles-dsl</artifactId>
-	 <version>0.1.0</version>
+	 <version>0.1.1</version>
    </dependency>
 ```
 

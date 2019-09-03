@@ -7,7 +7,7 @@ open class Ec2CloudImage(profile: CloudProfile) : CloudImage(profile) {
     /**
      * The AMI ID of this agent
      */
-    lateinit var ami: String
+    lateinit var amiId: String
     /**
      * The EC2 KeyPair name
      */
@@ -55,7 +55,7 @@ open class Ec2CloudImage(profile: CloudProfile) : CloudImage(profile) {
 
     constructor(profile: CloudProfile, init: Ec2CloudImage.() -> Unit) : this(profile) {
         init()
-        param("amazon-id", ami)
+        param("amazon-id", amiId)
         param("source-id", agentNamePrefix)
         param("image-name-prefix", agentNamePrefix)
         param("use-spot-instances", useSpotInstance.toString())

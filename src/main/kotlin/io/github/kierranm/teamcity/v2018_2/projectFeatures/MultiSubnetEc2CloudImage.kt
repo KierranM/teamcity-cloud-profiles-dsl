@@ -7,7 +7,7 @@ open class MultiSubnetEc2CloudImage(val profile: CloudProfile) {
     /**
      * The AMI ID of this agent
      */
-    lateinit var ami: String
+    lateinit var amiId: String
     /**
      * The EC2 KeyPair name
      */
@@ -67,18 +67,19 @@ open class MultiSubnetEc2CloudImage(val profile: CloudProfile) {
         var images = mutableListOf<Ec2CloudImage>()
         for (subnet in subnetIds) {
             val image = Ec2CloudImage(profile) {
-                ami = ami
-                ec2KeyPair = ec2KeyPair
+                amiId = this@MultiSubnetEc2CloudImage.amiId
+                ec2KeyPair = this@MultiSubnetEc2CloudImage.ec2KeyPair
                 subnetId = subnet
-                instanceType = instanceType
-                userData = userData
-                iamInstanceProfile = iamInstanceProfile
-                instanceTags = instanceTags
-                agentNamePrefix = agentNamePrefix
-                useSpotInstance = useSpotInstance
-                spotInstancePrice = spotInstancePrice
-                securityGroupIds = securityGroupIds
-                ebsOptimised = ebsOptimised
+                instanceType = this@MultiSubnetEc2CloudImage.instanceType
+                userData = this@MultiSubnetEc2CloudImage.userData
+                iamInstanceProfile = this@MultiSubnetEc2CloudImage.iamInstanceProfile
+                instanceTags = this@MultiSubnetEc2CloudImage.instanceTags
+                agentNamePrefix = this@MultiSubnetEc2CloudImage.agentNamePrefix
+                useSpotInstance = this@MultiSubnetEc2CloudImage.useSpotInstance
+                spotInstancePrice = this@MultiSubnetEc2CloudImage.spotInstancePrice
+                securityGroupIds = this@MultiSubnetEc2CloudImage.securityGroupIds
+                ebsOptimised = this@MultiSubnetEc2CloudImage.ebsOptimised
+                agentPoolId = this@MultiSubnetEc2CloudImage.agentPoolId
             }
             images.add(image)
         }
